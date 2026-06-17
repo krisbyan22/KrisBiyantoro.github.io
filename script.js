@@ -30,35 +30,60 @@ const fallbackRepositories = [
     stars: 1,
     html_url: "https://github.com/krisbyan22/MAESTRO-MOBILE",
     homepage: ""
-  },
-  {
-    name: "Katalon-Kafka",
-    description: "Kafka learning experiments with Katalon.",
-    language: "Groovy",
-    stars: 0,
-    html_url: "https://github.com/krisbyan22/Katalon-Kafka",
-    homepage: ""
-  },
-  {
-    name: "Cypress",
-    description: "Cypress BDD practice with Allure integration.",
-    language: "JavaScript",
-    stars: 0,
-    html_url: "https://github.com/krisbyan22/Cypress",
-    homepage: ""
   }
 ];
 
+const homeView = document.querySelector('[data-view="home"]');
+const profileView = document.querySelector('[data-view="profile"]');
 const navLinks = [...document.querySelectorAll(".nav-link")];
-const sections = [...document.querySelectorAll("main section[id]")];
+const contentSections = [...document.querySelectorAll(".profile-view .content-section")];
 const repoGrid = document.querySelector("[data-repo-grid]");
-const year = document.querySelector("#year");
 
-const activateNav = (id) => {
+let routeLockedByClick = false;
+
+const routeAliases = {
+  projects: "portfolio"
+};
+
+const parseRoute = () => {
+  const hash = window.location.hash || "#/";
+  const cleaned = hash.replace(/^#\/?/, "");
+  if (!cleaned) {
+    return "home";
+  }
+
+  return routeAliases[cleaned] || cleaned;
+};
+
+const markActiveLink = (route) => {
   navLinks.forEach((link) => {
-    const isActive = link.getAttribute("href") === `#${id}`;
+    const linkRoute = link.dataset.route;
+    const isActive = route === "home"
+      ? linkRoute === "home"
+      : linkRoute === route;
     link.classList.toggle("is-active", isActive);
   });
+};
+
+const showRoute = (route, shouldScroll = true) => {
+  const isHome = route === "home";
+
+  homeView.hidden = !isHome;
+  profileView.hidden = isHome;
+  document.body.classList.toggle("route-home", isHome);
+  document.body.classList.toggle("route-profile", !isHome);
+  markActiveLink(route);
+
+  if (!isHome) {
+    const targetSection = document.getElementById(route) || document.getElementById("about");
+    if (shouldScroll && targetSection) {
+      window.requestAnimationFrame(() => {
+        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  } else if (shouldScroll) {
+    window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
+  }
 };
 
 const repoTemplate = (repo) => {
@@ -68,9 +93,8 @@ const repoTemplate = (repo) => {
     : "";
 
   return `
-    <article class="card repo-card">
+    <article class="repo-card">
       <div>
-        <p class="card-label">GitHub Repository</p>
         <h3>${repo.name}</h3>
         <p>${description}</p>
       </div>
@@ -92,7 +116,7 @@ const renderRepositories = (repositories) => {
 
 const loadRepositories = async () => {
   try {
-    const response = await fetch("https://api.github.com/users/krisbyan22/repos?sort=updated&per_page=12");
+    const response = await fetch("https://api.github.com/users/krisbyan22/repos?sort=updated&per_page=20");
     if (!response.ok) {
       throw new Error("GitHub API unavailable");
     }
@@ -100,8 +124,9 @@ const loadRepositories = async () => {
     const repositories = await response.json();
     const publicRepos = repositories
       .filter((repo) => !repo.fork)
+      .filter((repo) => !["KrisBiyantoro.github.io", "krisbyan22.github.io"].includes(repo.name))
       .sort((first, second) => new Date(second.pushed_at) - new Date(first.pushed_at))
-      .slice(0, 6)
+      .slice(0, 4)
       .map((repo) => ({
         name: repo.name,
         description: repo.description,
@@ -119,20 +144,51 @@ const loadRepositories = async () => {
 
 const observer = new IntersectionObserver(
   (entries) => {
-    const visibleEntry = entries.find((entry) => entry.isIntersecting);
-    if (visibleEntry) {
-      activateNav(visibleEntry.target.id);
+    if (document.body.classList.contains("route-home") || routeLockedByClick) {
+      return;
+    }
+
+    const visibleEntry = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0];
+
+    if (!visibleEntry) {
+      return;
+    }
+
+    const route = visibleEntry.target.id;
+    markActiveLink(route);
+    const targetHash = `#/${route}`;
+    if (window.location.hash !== targetHash) {
+      history.replaceState(null, "", targetHash);
     }
   },
   {
-    threshold: 0.4,
-    rootMargin: "-10% 0px -20% 0px"
+    threshold: [0.35, 0.6],
+    rootMargin: "-10% 0px -45% 0px"
   }
 );
 
-sections.forEach((section) => observer.observe(section));
-loadRepositories();
+navLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    const route = link.dataset.route;
+    routeLockedByClick = true;
+    window.location.hash = route === "home" ? "#/" : `#/${route}`;
+    showRoute(route, true);
+    window.setTimeout(() => {
+      routeLockedByClick = false;
+    }, 700);
+  });
+});
 
-if (year) {
-  year.textContent = new Date().getFullYear();
-}
+contentSections.forEach((section) => observer.observe(section));
+
+window.addEventListener("hashchange", () => {
+  const route = parseRoute();
+  showRoute(route, false);
+});
+
+const initialRoute = parseRoute();
+showRoute(initialRoute, initialRoute !== "home");
+loadRepositories();

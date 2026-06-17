@@ -6,22 +6,20 @@
     <title>Kris Biyantoro | QA Automation Leader</title>
     <meta
       name="description"
-      content="Portfolio of Kris Biyantoro, QA Automation Leader with experience in testing strategy, system implementation, and cross-functional delivery."
+      content="Portfolio of Kris Biyantoro, QA Automation Leader with experience in automation testing, implementation, and enterprise system delivery."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="background-orb background-orb-one"></div>
-    <div class="background-orb background-orb-two"></div>
-    <div class="layout">
-      <aside class="sidebar">
-        <a class="brand" href="#home" aria-label="Go to homepage">
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#/" aria-label="Go to homepage">
           <span class="brand-mark">KB</span>
           <span class="brand-copy">
             <strong>Kris Biyantoro</strong>
@@ -30,387 +28,275 @@
         </a>
 
         <nav class="main-nav" aria-label="Primary navigation">
-          <a href="#home" class="nav-link is-active">Home</a>
-          <a href="#about" class="nav-link">About</a>
-          <a href="#impact" class="nav-link">Impact</a>
-          <a href="#experience" class="nav-link">Experience</a>
-          <a href="#skills" class="nav-link">Skills</a>
-          <a href="#projects" class="nav-link">Projects</a>
-          <a href="#contact" class="nav-link">Contact</a>
+          <a href="#/" class="nav-link" data-route="home">Home</a>
+          <a href="#/about" class="nav-link" data-route="about">About</a>
+          <a href="#/education" class="nav-link" data-route="education">Education</a>
+          <a href="#/experience" class="nav-link" data-route="experience">Experience</a>
+          <a href="#/skills" class="nav-link" data-route="skills">Skills</a>
+          <a href="#/portfolio" class="nav-link" data-route="portfolio">Portfolio</a>
+          <a href="#/contact" class="nav-link" data-route="contact">Contact</a>
         </nav>
+      </header>
 
-        <div class="sidebar-panel">
-          <p class="panel-title">Recruiter Quick View</p>
-          <p>
-            15+ years across QA, implementation, system support, and delivery
-            leadership.
-          </p>
-          <div class="sidebar-actions">
-            <a href="mailto:krisbyan22@gmail.com" class="text-link">Email</a>
-            <a href="assets/docs/kris-biyantoro-resume.pdf" class="text-link" download>
-              Resume
-            </a>
-            <a href="https://github.com/krisbyan22" class="text-link" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-          </div>
-        </div>
-      </aside>
-
-      <main class="content">
-        <section id="home" class="section hero">
-          <div class="section-copy">
-            <p class="eyebrow">Tangerang, Indonesia</p>
-            <h1>Kris Biyantoro</h1>
-            <p class="lead">
-              QA leader with 5+ years in automation testing and a broader
-              delivery background spanning healthcare systems, distribution
-              management, and enterprise implementation.
+      <main class="page-main">
+        <section class="home-view" data-view="home">
+          <div class="hero-copy">
+            <p class="hero-eyebrow">Hello, I'm</p>
+            <h1>KRIS BIYANTORO</h1>
+            <h2>QA Automation Leader</h2>
+            <p class="hero-summary">
+              I lead automation testing, release quality, and business-process
+              validation for enterprise systems in healthcare and distribution.
             </p>
-            <p class="supporting-copy">
-              I lead quality strategy, build scalable automation practices, and
-              help product and engineering teams turn complex business flows into
-              reliable releases.
-            </p>
+            <a class="primary-cta" href="#/about">More About Me &gt;&gt;</a>
+          </div>
 
-            <div class="cta-row">
-              <a class="button button-primary" href="mailto:krisbyan22@gmail.com">
-                Discuss an opportunity
-              </a>
-              <a
-                class="button button-secondary"
-                href="assets/docs/kris-biyantoro-resume.pdf"
-                download
-              >
-                Download resume
-              </a>
+          <div class="hero-image-wrap">
+            <img
+              src="assets/images/kris-biyantoro.png"
+              alt="Portrait of Kris Biyantoro"
+              class="hero-image"
+            />
+          </div>
+        </section>
+
+        <div class="profile-view" data-view="profile" hidden>
+          <section id="about" class="content-section">
+            <div class="section-intro">
+              <h2>ABOUT <span>ME</span></h2>
             </div>
 
-            <div class="hero-stats">
-              <article class="stat-card">
-                <strong>15+</strong>
-                <span>Years in technology operations and delivery</span>
+            <div class="about-layout">
+              <div class="about-copy">
+                <p>
+                  Hi, my name is <span class="accent-text">Kris Biyantoro</span>.
+                  I am based in Tangerang and currently focus on QA automation
+                  leadership, testing strategy, and release quality for
+                  business-critical systems.
+                </p>
+                <p>
+                  My career combines automation testing, manual QA leadership,
+                  system implementation, application support, and stakeholder
+                  collaboration. That mix helps me bridge technical quality with
+                  real operational workflows.
+                </p>
+                <p>
+                  Over the years I have introduced structured testing practices,
+                  mentored QA teams, automated high-value flows, and supported
+                  distribution management and healthcare systems where
+                  reliability is essential.
+                </p>
+
+                <div class="metrics-strip">
+                  <div class="metric-pill">15+ years in delivery and systems</div>
+                  <div class="metric-pill">70% automation coverage achieved</div>
+                  <div class="metric-pill">8 hours regression saved per sprint</div>
+                  <div class="metric-pill">90% critical feature coverage</div>
+                </div>
+              </div>
+
+              <aside class="profile-card">
+                <img
+                  src="assets/images/kris-biyantoro.png"
+                  alt="Kris Biyantoro profile"
+                  class="profile-card-image"
+                />
+                <h3>Kris Biyantoro</h3>
+                <p>QA Automation Leader</p>
+                <a href="assets/docs/kris-biyantoro-resume.pdf" class="download-link" download>
+                  See my CV
+                </a>
+              </aside>
+            </div>
+          </section>
+
+          <section id="education" class="content-section">
+            <div class="section-intro">
+              <h2>EDU<span>CATION</span></h2>
+            </div>
+
+            <div class="dual-column">
+              <div class="section-column">
+                <h3>FORMAL</h3>
+                <article class="entry-card">
+                  <div class="entry-year">Graduated 2009</div>
+                  <div class="entry-body">
+                    <div class="entry-title">Associate Degree in Computer Engineering</div>
+                    <div class="entry-detail">Universitas Kristen Satya Wacana</div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="section-column">
+                <h3>CONTINUOUS LEARNING</h3>
+                <article class="entry-card">
+                  <div class="entry-year">Ongoing</div>
+                  <div class="entry-body">
+                    <div class="entry-title">Automation Labs and Technical Practice</div>
+                    <div class="entry-detail">
+                      Active self-learning through GitHub projects covering
+                      Playwright, Selenium, Cypress, K6, Maestro, and Katalon-based
+                      experiments.
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <section id="experience" class="content-section">
+            <div class="section-intro">
+              <h2>WORK <span>EXPERIENCE</span></h2>
+            </div>
+
+            <div class="experience-list">
+              <article class="entry-card">
+                <div class="entry-year">Dec 2020 - Present</div>
+                <div class="entry-body">
+                  <div class="entry-title">Quality Assurance Team Leader (Automation Testing)</div>
+                  <div class="entry-company">PT Paramadaksa Teknologi Nusantara (nexSOFT)</div>
+                  <div class="entry-detail">
+                    Led a 5-member automation team, established Katalon best
+                    practices, expanded automation coverage to 70%, integrated
+                    CI/CD-based testing, and reduced regression time by 8 hours
+                    per sprint.
+                  </div>
+                </div>
               </article>
-              <article class="stat-card">
-                <strong>70%</strong>
-                <span>Automation coverage achieved with Katalon practices</span>
+
+              <article class="entry-card">
+                <div class="entry-year">Oct 2019 - Dec 2020</div>
+                <div class="entry-body">
+                  <div class="entry-title">Quality Assurance Team Leader (Manual Testing)</div>
+                  <div class="entry-company">PT Paramadaksa Teknologi Nusantara (nexSOFT)</div>
+                  <div class="entry-detail">
+                    Directed manual testing teams for web and mobile releases,
+                    coordinated bug validation, and improved onboarding through
+                    clearer documentation and better test design.
+                  </div>
+                </div>
               </article>
-              <article class="stat-card">
-                <strong>8 hrs</strong>
-                <span>Regression time reduced per sprint</span>
+
+              <article class="entry-card">
+                <div class="entry-year">Jul 2017 - Oct 2019</div>
+                <div class="entry-body">
+                  <div class="entry-title">Consultant System</div>
+                  <div class="entry-company">PT Paramadaksa Teknologi Nusantara (nexSOFT)</div>
+                  <div class="entry-detail">
+                    Led end-to-end Distribution Management System implementations,
+                    translated business needs into technical requirements, and
+                    created training and transition documentation for clients.
+                  </div>
+                </div>
               </article>
-              <article class="stat-card">
-                <strong>90%</strong>
-                <span>Critical feature coverage in shift-left testing</span>
+
+              <article class="entry-card">
+                <div class="entry-year">Jul 2013 - Dec 2016</div>
+                <div class="entry-body">
+                  <div class="entry-title">System Analyst and Application Support</div>
+                  <div class="entry-company">PT. Solusi Informasi Medika</div>
+                  <div class="entry-detail">
+                    Supported HIS MedicOS deployments across 5+ healthcare
+                    facilities, handled project coordination, and built early
+                    automation solutions with Selenium, Visual Studio .NET, and SQL Server.
+                  </div>
+                </div>
+              </article>
+
+              <article class="entry-card">
+                <div class="entry-year">Apr 2012 - Jun 2013</div>
+                <div class="entry-body">
+                  <div class="entry-title">IT Staff</div>
+                  <div class="entry-company">Kanaan Global School</div>
+                  <div class="entry-detail">
+                    Managed maintenance, troubleshooting, networking, website
+                    updates, and school payment application support.
+                  </div>
+                </div>
+              </article>
+
+              <article class="entry-card">
+                <div class="entry-year">Apr 2010 - Apr 2012</div>
+                <div class="entry-body">
+                  <div class="entry-title">IT and HR Staff</div>
+                  <div class="entry-company">Yayasan Pendidikan Charitas</div>
+                  <div class="entry-detail">
+                    Delivered IT support, internal application maintenance,
+                    website updates, payroll reporting, and tax-reporting support.
+                  </div>
+                </div>
               </article>
             </div>
-          </div>
+          </section>
 
-          <div class="hero-visual">
-            <div class="portrait-frame">
-              <img
-                src="assets/images/kris-biyantoro.png"
-                alt="Portrait of Kris Biyantoro"
-              />
+          <section id="skills" class="content-section">
+            <div class="section-intro">
+              <h2>SKI<span>LLS</span></h2>
             </div>
-            <div class="hero-note">
-              <span>Current focus</span>
-              <strong>QA automation leadership, delivery quality, and business-process testing</strong>
+
+            <div class="skills-cloud">
+              <div class="skill-chip">QA Automation</div>
+              <div class="skill-chip">Manual Testing</div>
+              <div class="skill-chip">Katalon Studio</div>
+              <div class="skill-chip">Selenium</div>
+              <div class="skill-chip">Web Testing</div>
+              <div class="skill-chip">Mobile Testing</div>
+              <div class="skill-chip">API Testing</div>
+              <div class="skill-chip">CI / CD</div>
+              <div class="skill-chip">SQL Query Language</div>
+              <div class="skill-chip">Systems Analysis</div>
+              <div class="skill-chip">Project Implementation</div>
+              <div class="skill-chip">PMO Support</div>
+              <div class="skill-chip">Team Leadership</div>
+              <div class="skill-chip">Documentation</div>
+              <div class="skill-chip">Problem Solving</div>
+              <div class="skill-chip">Business Process Mapping</div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="about" class="section">
-          <div class="section-heading">
-            <p class="eyebrow">About</p>
-            <h2>Quality strategy with strong business context</h2>
-          </div>
+          <section id="portfolio" class="content-section">
+            <div class="section-intro">
+              <h2>PORT<span>FOLIO</span></h2>
+            </div>
 
-          <div class="two-column-grid">
-            <article class="card">
-              <p>
-                My background combines hands-on testing, system implementation,
-                and stakeholder-facing consulting. That mix helps me understand
-                both the technical quality layer and the business impact behind
-                each release.
-              </p>
-              <p>
-                I have led manual and automation QA teams, introduced structured
-                testing practices, and supported enterprise systems used in
-                healthcare and distribution environments where reliability
-                matters.
-              </p>
-            </article>
-
-            <article class="card accent-card">
-              <p class="card-label">What I bring</p>
-              <ul class="simple-list">
-                <li>Automation frameworks for web, mobile, and API testing</li>
-                <li>QA leadership, team mentoring, and process standardization</li>
-                <li>Business-process analysis for DMS and healthcare workflows</li>
-                <li>Cross-functional collaboration with product and engineering teams</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section id="impact" class="section">
-          <div class="section-heading">
-            <p class="eyebrow">Impact</p>
-            <h2>Measured outcomes from recent roles</h2>
-          </div>
-
-          <div class="impact-grid">
-            <article class="card impact-card">
-              <p class="impact-value">5</p>
-              <p class="impact-title">Automation team members mentored</p>
-              <p class="impact-copy">
-                Built a focused QA automation team and introduced repeatable
-                Katalon Studio practices.
-              </p>
-            </article>
-
-            <article class="card impact-card">
-              <p class="impact-value">70%</p>
-              <p class="impact-title">Automation coverage</p>
-              <p class="impact-copy">
-                Expanded regression automation to cover higher-value business
-                flows and release checkpoints.
-              </p>
-            </article>
-
-            <article class="card impact-card">
-              <p class="impact-value">8h</p>
-              <p class="impact-title">Regression time saved each sprint</p>
-              <p class="impact-copy">
-                Reduced repetitive manual effort through better scripting,
-                standards, and test asset reuse.
-              </p>
-            </article>
-
-            <article class="card impact-card">
-              <p class="impact-value">5+</p>
-              <p class="impact-title">Healthcare facilities supported</p>
-              <p class="impact-copy">
-                Helped deliver and support HIS MedicOS implementations across
-                multiple hospital and clinic environments.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section id="experience" class="section">
-          <div class="section-heading">
-            <p class="eyebrow">Experience</p>
-            <h2>Career journey</h2>
-          </div>
-
-          <div class="timeline">
-            <article class="timeline-item">
-              <div class="timeline-meta">
-                <span class="timeline-period">Dec 2020 - Present</span>
-                <h3>Quality Assurance Team Leader (Automation Testing)</h3>
-                <p>PT Paramadaksa Teknologi Nusantara (nexSOFT)</p>
-              </div>
-              <ul class="simple-list">
-                <li>Built and mentored a 5-member automation team.</li>
-                <li>Established Katalon standards that lifted automation coverage to 70%.</li>
-                <li>Integrated CI/CD-based test execution for shift-left quality checks.</li>
-                <li>Designed modular automation for web, mobile, and API flows.</li>
-                <li>Supported DMS process quality with strong business-domain input.</li>
-              </ul>
-            </article>
-
-            <article class="timeline-item">
-              <div class="timeline-meta">
-                <span class="timeline-period">Oct 2019 - Dec 2020</span>
-                <h3>Quality Assurance Team Leader (Manual Testing)</h3>
-                <p>PT Paramadaksa Teknologi Nusantara (nexSOFT)</p>
-              </div>
-              <ul class="simple-list">
-                <li>Led manual test planning and execution for web and mobile releases.</li>
-                <li>Coordinated bug validation, prioritization, and resolution follow-up.</li>
-                <li>Translated business requirements into clear test scenarios.</li>
-                <li>Improved onboarding through better test documentation.</li>
-              </ul>
-            </article>
-
-            <article class="timeline-item">
-              <div class="timeline-meta">
-                <span class="timeline-period">Jul 2017 - Oct 2019</span>
-                <h3>Consultant System</h3>
-                <p>PT Paramadaksa Teknologi Nusantara (nexSOFT)</p>
-              </div>
-              <ul class="simple-list">
-                <li>Led end-to-end Distribution Management System implementations.</li>
-                <li>Mapped business needs into technical requirements and feature requests.</li>
-                <li>Delivered user training and operational documentation.</li>
-              </ul>
-            </article>
-
-            <article class="timeline-item">
-              <div class="timeline-meta">
-                <span class="timeline-period">Jul 2013 - Dec 2016</span>
-                <h3>System Analyst and Application Support</h3>
-                <p>PT. Solusi Informasi Medika</p>
-              </div>
-              <ul class="simple-list">
-                <li>Managed HIS MedicOS implementations for hospital and clinic environments.</li>
-                <li>Led project coordination for Siloam Labuan Bajo and Siloam Kupang.</li>
-                <li>Built early automated testing solutions using Selenium and SQL Server.</li>
-              </ul>
-            </article>
-
-            <article class="timeline-item">
-              <div class="timeline-meta">
-                <span class="timeline-period">Apr 2012 - Jun 2013</span>
-                <h3>IT Staff</h3>
-                <p>Kanaan Global School</p>
-              </div>
-              <ul class="simple-list">
-                <li>Handled maintenance, troubleshooting, and network support.</li>
-                <li>Updated school website content and internal payment applications.</li>
-              </ul>
-            </article>
-
-            <article class="timeline-item">
-              <div class="timeline-meta">
-                <span class="timeline-period">Apr 2010 - Apr 2012</span>
-                <h3>IT and HR Staff</h3>
-                <p>Yayasan Pendidikan Charitas</p>
-              </div>
-              <ul class="simple-list">
-                <li>Supported IT operations, internal tools, and website updates.</li>
-                <li>Prepared payroll and routine tax-reporting outputs.</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section id="skills" class="section">
-          <div class="section-heading">
-            <p class="eyebrow">Skills</p>
-            <h2>Core strengths</h2>
-          </div>
-
-          <div class="skills-grid">
-            <article class="card">
-              <p class="card-label">QA and Delivery</p>
-              <ul class="simple-list">
-                <li>Quality Assurance: manual and automation</li>
-                <li>Test case design and regression strategy</li>
-                <li>Project implementation and PMO support</li>
-                <li>Team leadership and stakeholder coordination</li>
-              </ul>
-            </article>
-
-            <article class="card">
-              <p class="card-label">Automation and Tools</p>
-              <ul class="simple-list">
-                <li>Katalon Studio</li>
-                <li>Selenium</li>
-                <li>SQL query language</li>
-                <li>CI/CD-aligned automation workflows</li>
-              </ul>
-            </article>
-
-            <article class="card">
-              <p class="card-label">Systems and Analysis</p>
-              <ul class="simple-list">
-                <li>Systems analysis</li>
-                <li>Business-process mapping</li>
-                <li>Problem solving and analytical thinking</li>
-                <li>Documentation and user enablement</li>
-              </ul>
-            </article>
-
-            <article class="card">
-              <p class="card-label">Languages and Education</p>
-              <ul class="simple-list">
-                <li>Indonesian</li>
-                <li>English</li>
-                <li>Associate Degree in Computer Engineering</li>
-                <li>Universitas Kristen Satya Wacana, graduated 2009</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section id="projects" class="section">
-          <div class="section-heading">
-            <p class="eyebrow">Projects</p>
-            <h2>GitHub learning labs and experiments</h2>
-          </div>
-
-          <div class="projects-header">
-            <p>
+            <div class="portfolio-copy">
               Public repositories below are loaded from GitHub and reflect the
-              latest work visible on the <a href="https://github.com/krisbyan22" target="_blank" rel="noreferrer">krisbyan22 profile</a>.
-            </p>
-          </div>
-
-          <div class="repo-grid" data-repo-grid>
-            <article class="card repo-card repo-loading">
-              <p class="card-label">Loading repositories</p>
-              <p>Fetching the latest public projects from GitHub.</p>
-            </article>
-          </div>
-        </section>
-
-        <section id="contact" class="section">
-          <div class="section-heading">
-            <p class="eyebrow">Contact</p>
-            <h2>Available for recruiter conversations</h2>
-          </div>
-
-          <div class="contact-grid">
-            <article class="card contact-card">
-              <p class="card-label">Email</p>
-              <a href="mailto:krisbyan22@gmail.com">krisbyan22@gmail.com</a>
-            </article>
-
-            <article class="card contact-card">
-              <p class="card-label">Phone / WhatsApp</p>
-              <a href="https://wa.me/6281294098087" target="_blank" rel="noreferrer">
-                +62 812 9409 8087
-              </a>
-            </article>
-
-            <article class="card contact-card">
-              <p class="card-label">LinkedIn</p>
-              <a
-                href="https://www.linkedin.com/in/kris-biyantoro-a7b2b0137/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                linkedin.com/in/kris-biyantoro-a7b2b0137
-              </a>
-            </article>
-
-            <article class="card contact-card">
-              <p class="card-label">GitHub</p>
+              latest public automation labs from
               <a href="https://github.com/krisbyan22" target="_blank" rel="noreferrer">
-                github.com/krisbyan22
-              </a>
-            </article>
-          </div>
+                krisbyan22
+              </a>.
+            </div>
 
-          <article class="card recruiter-card">
-            <p class="card-label">Open to roles</p>
-            <h3>QA Automation Lead, QA Manager, Senior QA, or quality-focused delivery roles</h3>
-            <p>
-              If you are hiring for a role that needs both testing depth and
-              business-process understanding, I would be glad to connect.
-            </p>
-          </article>
-        </section>
+            <div class="repo-grid" data-repo-grid>
+              <article class="repo-card repo-loading">
+                <p>Loading repositories from GitHub...</p>
+              </article>
+            </div>
+          </section>
+
+          <section id="contact" class="content-section">
+            <div class="section-intro">
+              <h2>CONTACT <span>ME</span></h2>
+            </div>
+
+            <div class="contact-list">
+              <a href="https://www.linkedin.com/in/kris-biyantoro-a7b2b0137/" target="_blank" rel="noreferrer">
+                LinkedIn: Kris Biyantoro
+              </a>
+              <a href="mailto:krisbyan22@gmail.com">
+                gmail: krisbyan22@gmail.com
+              </a>
+              <a href="https://github.com/krisbyan22" target="_blank" rel="noreferrer">
+                GitHub: krisbyan22
+              </a>
+              <a href="https://wa.me/6281294098087" target="_blank" rel="noreferrer">
+                WhatsApp: +62 812 9409 8087
+              </a>
+            </div>
+          </section>
+        </div>
       </main>
     </div>
-
-    <footer class="site-footer">
-      <p>Built for recruiter-friendly reading and fast access to resume, contact info, and work history.</p>
-      <p>&copy; <span id="year"></span> Kris Biyantoro</p>
-    </footer>
 
     <script src="script.js"></script>
   </body>
