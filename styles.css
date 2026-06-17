@@ -359,6 +359,7 @@ img {
   --skill-color: #4fc3f7;
   --skill-rgb: 79, 195, 247;
   position: relative;
+  overflow: hidden;
   padding: 22px 18px 18px;
   border: 1px solid rgba(var(--skill-rgb), 0.32);
   border-radius: 22px;
@@ -370,6 +371,16 @@ img {
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: auto -18% -36% -18%;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--skill-rgb), 0.28) 0%, rgba(var(--skill-rgb), 0) 72%);
+  pointer-events: none;
+}
+
 .skill-card:hover {
   transform: translateY(-4px);
   border-color: rgba(var(--skill-rgb), 0.55);
@@ -379,6 +390,7 @@ img {
 }
 
 .skill-icon-wrap {
+  position: relative;
   display: grid;
   place-items: center;
   width: 72px;
@@ -393,13 +405,25 @@ img {
     0 10px 20px rgba(0, 0, 0, 0.22);
 }
 
+.skill-icon-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(var(--skill-rgb), 0.05));
+}
+
 .skill-icon {
+  position: relative;
+  z-index: 1;
   width: 40px;
   height: 40px;
-  color: var(--skill-color);
+  filter: drop-shadow(0 10px 18px rgba(var(--skill-rgb), 0.2));
 }
 
 .skill-card h3 {
+  position: relative;
+  z-index: 1;
   margin: 0;
   font-size: 1rem;
   line-height: 1.4;
