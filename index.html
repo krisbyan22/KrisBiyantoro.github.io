@@ -17,6 +17,101 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <svg aria-hidden="true" class="icon-sprite">
+      <symbol id="icon-qa-automation" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="10" fill="none" stroke="currentColor" stroke-width="4" />
+        <path d="M32 8v8M32 48v8M8 32h8M48 32h8M15 15l6 6M43 43l6 6M49 15l-6 6M21 43l-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+        <path d="M27 33l4 4 8-10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+      </symbol>
+      <symbol id="icon-manual-testing" viewBox="0 0 64 64">
+        <rect x="18" y="10" width="28" height="44" rx="6" fill="none" stroke="currentColor" stroke-width="4" />
+        <rect x="24" y="6" width="16" height="8" rx="3" fill="currentColor" />
+        <path d="M25 24h14M25 34h14M25 44h14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+        <path d="M14 36l4 4 8-10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+      </symbol>
+      <symbol id="icon-katalon" viewBox="0 0 64 64">
+        <path d="M18 17l12-7 6 10-12 7z" fill="currentColor" opacity="0.95" />
+        <path d="M34 44l12-7 6 10-12 7z" fill="currentColor" opacity="0.75" />
+        <path d="M16 45l12-20 8 4-12 20z" fill="currentColor" opacity="0.45" />
+      </symbol>
+      <symbol id="icon-selenium" viewBox="0 0 64 64">
+        <circle cx="22" cy="18" r="6" fill="currentColor" />
+        <circle cx="44" cy="18" r="6" fill="currentColor" opacity="0.9" />
+        <circle cx="32" cy="44" r="6" fill="currentColor" opacity="0.7" />
+        <path d="M27 21l10 0M24 23l5 12M40 23l-5 12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+        <circle cx="32" cy="32" r="20" fill="none" stroke="currentColor" stroke-opacity="0.22" stroke-width="3" />
+      </symbol>
+      <symbol id="icon-web-testing" viewBox="0 0 64 64">
+        <rect x="10" y="14" width="44" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="4" />
+        <path d="M10 22h44" fill="none" stroke="currentColor" stroke-width="4" />
+        <circle cx="24" cy="36" r="8" fill="none" stroke="currentColor" stroke-width="4" />
+        <path d="M30 42l8 8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+      </symbol>
+      <symbol id="icon-mobile-testing" viewBox="0 0 64 64">
+        <rect x="20" y="10" width="24" height="44" rx="6" fill="none" stroke="currentColor" stroke-width="4" />
+        <path d="M28 16h8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+        <circle cx="32" cy="48" r="2" fill="currentColor" />
+        <path d="M25 33l5 5 10-12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+      </symbol>
+      <symbol id="icon-api-testing" viewBox="0 0 64 64">
+        <path d="M20 18l-10 14 10 14M44 18l10 14-10 14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+        <circle cx="32" cy="22" r="4" fill="currentColor" />
+        <circle cx="32" cy="42" r="4" fill="currentColor" opacity="0.7" />
+        <path d="M32 26v12" fill="none" stroke="currentColor" stroke-width="4" />
+      </symbol>
+      <symbol id="icon-cicd" viewBox="0 0 64 64">
+        <path d="M18 18h16v10M46 46H30V36" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+        <path d="M34 18l6 5-6 5M30 46l-6-5 6-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+        <rect x="16" y="14" width="32" height="36" rx="10" fill="none" stroke="currentColor" stroke-opacity="0.22" stroke-width="3" />
+      </symbol>
+      <symbol id="icon-sql" viewBox="0 0 64 64">
+        <ellipse cx="32" cy="16" rx="16" ry="7" fill="none" stroke="currentColor" stroke-width="4" />
+        <path d="M16 16v16c0 3.9 7.2 7 16 7s16-3.1 16-7V16M16 32v16c0 3.9 7.2 7 16 7s16-3.1 16-7V32" fill="none" stroke="currentColor" stroke-width="4" />
+      </symbol>
+      <symbol id="icon-systems-analysis" viewBox="0 0 64 64">
+        <path d="M16 44V30M28 44V22M40 44V28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+        <path d="M12 48h36" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+        <circle cx="44" cy="22" r="8" fill="none" stroke="currentColor" stroke-width="4" />
+        <path d="M49 27l7 7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+      </symbol>
+      <symbol id="icon-project-implementation" viewBox="0 0 64 64">
+        <path d="M38 12c8 4 14 14 14 14l-12 8-10-10 8-12z" fill="currentColor" opacity="0.95" />
+        <path d="M30 24l10 10-8 12s-10-6-14-14l12-8z" fill="currentColor" opacity="0.55" />
+        <path d="M20 44l-6 6M24 40l-2 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+      </symbol>
+      <symbol id="icon-pmo" viewBox="0 0 64 64">
+        <rect x="10" y="14" width="44" height="36" rx="6" fill="none" stroke="currentColor" stroke-width="4" />
+        <path d="M24 14v36M40 14v36M10 28h44" fill="none" stroke="currentColor" stroke-width="4" />
+        <circle cx="17" cy="21" r="3" fill="currentColor" />
+        <circle cx="31" cy="35" r="3" fill="currentColor" opacity="0.8" />
+        <circle cx="47" cy="43" r="3" fill="currentColor" opacity="0.65" />
+      </symbol>
+      <symbol id="icon-team-leadership" viewBox="0 0 64 64">
+        <circle cx="20" cy="26" r="6" fill="currentColor" opacity="0.7" />
+        <circle cx="44" cy="26" r="6" fill="currentColor" opacity="0.7" />
+        <circle cx="32" cy="20" r="7" fill="currentColor" />
+        <path d="M14 46c2-6 7-10 13-10M50 46c-2-6-7-10-13-10M22 48c2-7 8-12 10-12s8 5 10 12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+      </symbol>
+      <symbol id="icon-documentation" viewBox="0 0 64 64">
+        <path d="M20 10h18l10 10v34H20z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4" />
+        <path d="M38 10v12h12" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4" />
+        <path d="M26 32h12M26 40h12M26 48h8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+      </symbol>
+      <symbol id="icon-problem-solving" viewBox="0 0 64 64">
+        <path d="M24 42c-5-3-8-8-8-14 0-9 7-16 16-16s16 7 16 16c0 6-3 11-8 14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+        <path d="M26 48h12M27 54h10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+        <path d="M28 30l4 4 8-10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+      </symbol>
+      <symbol id="icon-process-mapping" viewBox="0 0 64 64">
+        <rect x="10" y="14" width="14" height="10" rx="3" fill="currentColor" />
+        <circle cx="48" cy="18" r="6" fill="currentColor" opacity="0.8" />
+        <path d="M24 19h18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+        <path d="M48 24v10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+        <path d="M42 40l6-6 6 6-6 6z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4" />
+        <path d="M42 40H24M24 40V28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4" />
+        <rect x="16" y="24" width="16" height="8" rx="3" fill="currentColor" opacity="0.55" />
+      </symbol>
+    </svg>
     <div class="page-shell">
       <header class="topbar">
         <a class="brand" href="#/" aria-label="Go to homepage">
@@ -234,23 +329,118 @@
               <h2>SKI<span>LLS</span></h2>
             </div>
 
-            <div class="skills-cloud">
-              <div class="skill-chip">QA Automation</div>
-              <div class="skill-chip">Manual Testing</div>
-              <div class="skill-chip">Katalon Studio</div>
-              <div class="skill-chip">Selenium</div>
-              <div class="skill-chip">Web Testing</div>
-              <div class="skill-chip">Mobile Testing</div>
-              <div class="skill-chip">API Testing</div>
-              <div class="skill-chip">CI / CD</div>
-              <div class="skill-chip">SQL Query Language</div>
-              <div class="skill-chip">Systems Analysis</div>
-              <div class="skill-chip">Project Implementation</div>
-              <div class="skill-chip">PMO Support</div>
-              <div class="skill-chip">Team Leadership</div>
-              <div class="skill-chip">Documentation</div>
-              <div class="skill-chip">Problem Solving</div>
-              <div class="skill-chip">Business Process Mapping</div>
+            <div class="skills-gallery">
+              <article class="skill-card skill-cyan">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-qa-automation"></use></svg>
+                </div>
+                <h3>QA Automation</h3>
+              </article>
+
+              <article class="skill-card skill-amber">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-manual-testing"></use></svg>
+                </div>
+                <h3>Manual Testing</h3>
+              </article>
+
+              <article class="skill-card skill-green">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-katalon"></use></svg>
+                </div>
+                <h3>Katalon Studio</h3>
+              </article>
+
+              <article class="skill-card skill-lime">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-selenium"></use></svg>
+                </div>
+                <h3>Selenium</h3>
+              </article>
+
+              <article class="skill-card skill-blue">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-web-testing"></use></svg>
+                </div>
+                <h3>Web Testing</h3>
+              </article>
+
+              <article class="skill-card skill-violet">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-mobile-testing"></use></svg>
+                </div>
+                <h3>Mobile Testing</h3>
+              </article>
+
+              <article class="skill-card skill-red">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-api-testing"></use></svg>
+                </div>
+                <h3>API Testing</h3>
+              </article>
+
+              <article class="skill-card skill-orange">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-cicd"></use></svg>
+                </div>
+                <h3>CI / CD</h3>
+              </article>
+
+              <article class="skill-card skill-sky">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-sql"></use></svg>
+                </div>
+                <h3>SQL Query Language</h3>
+              </article>
+
+              <article class="skill-card skill-indigo">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-systems-analysis"></use></svg>
+                </div>
+                <h3>Systems Analysis</h3>
+              </article>
+
+              <article class="skill-card skill-pink">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-project-implementation"></use></svg>
+                </div>
+                <h3>Project Implementation</h3>
+              </article>
+
+              <article class="skill-card skill-copper">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-pmo"></use></svg>
+                </div>
+                <h3>PMO Support</h3>
+              </article>
+
+              <article class="skill-card skill-teal">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-team-leadership"></use></svg>
+                </div>
+                <h3>Team Leadership</h3>
+              </article>
+
+              <article class="skill-card skill-silver">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-documentation"></use></svg>
+                </div>
+                <h3>Documentation</h3>
+              </article>
+
+              <article class="skill-card skill-gold">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-problem-solving"></use></svg>
+                </div>
+                <h3>Problem Solving</h3>
+              </article>
+
+              <article class="skill-card skill-mint">
+                <div class="skill-icon-wrap">
+                  <svg class="skill-icon"><use href="#icon-process-mapping"></use></svg>
+                </div>
+                <h3>Business Process Mapping</h3>
+              </article>
             </div>
           </section>
 
