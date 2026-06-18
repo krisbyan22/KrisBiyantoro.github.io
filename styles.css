@@ -893,107 +893,119 @@ img {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 18px 16px;
+  grid-template-columns: repeat(auto-fit, minmax(116px, 1fr));
+  gap: 20px 16px;
   align-items: start;
+  padding: 12px 8px 10px;
+  min-height: 360px;
+  overflow: hidden;
+  border-radius: 26px;
 }
 
 .skill-card {
   --skill-color: #4fc3f7;
   --skill-rgb: 79, 195, 247;
+  --drag-x: 0px;
+  --drag-y: 0px;
+  --skill-scale: 1;
   position: relative;
-  padding: 14px 10px 12px;
-  overflow: hidden;
-  border: 1px solid rgba(var(--skill-rgb), 0.16);
-  border-radius: 20px;
-  background:
-    linear-gradient(180deg, rgba(var(--skill-rgb), 0.08), rgba(9, 12, 20, 0.12) 34%, rgba(9, 12, 20, 0.48)),
-    rgba(8, 11, 18, 0.64);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-height: 148px;
+  padding: 10px 8px 8px;
+  overflow: visible;
+  border: 0;
+  border-radius: 24px;
+  background: transparent;
   text-align: center;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.02),
-    0 12px 24px rgba(0, 0, 0, 0.12);
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  will-change: transform;
+  transform: translate3d(var(--drag-x), var(--drag-y), 0) scale(var(--skill-scale));
+  transition: transform 180ms ease, filter 180ms ease, opacity 180ms ease;
 }
 
 .skill-card::before {
   content: "";
   position: absolute;
-  inset: 0 0 auto;
-  height: 46px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent);
-  opacity: 0.6;
+  top: 4px;
+  left: 50%;
+  width: 94px;
+  height: 94px;
+  border-radius: 30px;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.26), transparent 30%),
+    radial-gradient(circle at center, rgba(var(--skill-rgb), 0.22), rgba(var(--skill-rgb), 0.06) 58%, transparent 78%);
+  box-shadow:
+    0 14px 36px rgba(var(--skill-rgb), 0.12),
+    0 18px 28px rgba(0, 0, 0, 0.18);
+  opacity: 0.92;
+  pointer-events: none;
 }
 
 .skill-card::after {
   content: "";
   position: absolute;
-  right: 14px;
-  bottom: 10px;
-  left: 14px;
-  height: 2px;
+  right: 20px;
+  bottom: 0;
+  left: 20px;
+  height: 1px;
   border-radius: 999px;
-  background: linear-gradient(90deg, rgba(var(--skill-rgb), 0), rgba(var(--skill-rgb), 0.92), rgba(var(--skill-rgb), 0));
-  opacity: 0.64;
-  transform-origin: center;
-  animation: skill-line-pulse 3.8s ease-in-out infinite;
+  background: linear-gradient(90deg, rgba(var(--skill-rgb), 0), rgba(var(--skill-rgb), 0.7), rgba(var(--skill-rgb), 0));
+  opacity: 0.58;
+  pointer-events: none;
 }
 
 .skill-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(var(--skill-rgb), 0.32);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
-    0 16px 30px rgba(0, 0, 0, 0.18),
-    0 0 0 1px rgba(var(--skill-rgb), 0.05);
+  --skill-scale: 1.05;
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.18));
 }
 
-.skill-card:nth-child(2n)::after {
-  animation-delay: 0.5s;
-}
-
-.skill-card:nth-child(3n)::after {
-  animation-delay: 1s;
+.skill-card.is-dragging {
+  --skill-scale: 1.08;
+  z-index: 5;
+  cursor: grabbing;
+  transition: none;
+  filter:
+    drop-shadow(0 22px 38px rgba(0, 0, 0, 0.24))
+    drop-shadow(0 0 18px rgba(var(--skill-rgb), 0.16));
 }
 
 .skill-icon-wrap {
   position: relative;
   display: grid;
   place-items: center;
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 12px;
-  border-radius: 16px;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.16), transparent 35%),
-    rgba(var(--skill-rgb), 0.13);
-  box-shadow:
-    inset 0 0 0 1px rgba(var(--skill-rgb), 0.22),
-    0 10px 18px rgba(0, 0, 0, 0.18);
+  z-index: 1;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto;
+  border-radius: 28px;
   animation: skill-bob 4.8s ease-in-out infinite;
 }
 
 .skill-icon-wrap-brand {
-  background:
-    radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 44%),
-    linear-gradient(180deg, rgba(252, 254, 255, 0.98), rgba(232, 242, 250, 0.84));
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
-    0 10px 18px rgba(0, 0, 0, 0.18),
-    0 0 0 1px rgba(var(--skill-rgb), 0.14);
+  width: 96px;
+  height: 96px;
 }
 
 .skill-icon-wrap::after {
   content: "";
   position: absolute;
-  inset: 6px;
-  border-radius: 12px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(var(--skill-rgb), 0.05));
+  inset: 14px;
+  border-radius: 24px;
+  background: radial-gradient(circle at center, rgba(var(--skill-rgb), 0.12), transparent 72%);
+  filter: blur(10px);
+  opacity: 0.85;
+  pointer-events: none;
 }
 
 .skill-icon-wrap-brand::after {
-  inset: 5px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0.08));
+  inset: 12px;
+  opacity: 0.56;
 }
 
 .skill-card:nth-child(2n) .skill-icon-wrap {
@@ -1007,38 +1019,71 @@ img {
 .skill-icon {
   position: relative;
   z-index: 1;
-  width: 31px;
-  height: 31px;
-  filter: drop-shadow(0 10px 18px rgba(var(--skill-rgb), 0.2));
+  width: 56px;
+  height: 56px;
+  filter: drop-shadow(0 12px 20px rgba(var(--skill-rgb), 0.24));
 }
 
-.skill-brand-logo {
+.skill-logo {
   position: relative;
   z-index: 1;
-  width: 30px;
-  height: 30px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
-  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.16));
+  pointer-events: none;
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.16));
 }
 
-.skill-brand-logo-katalon {
-  width: 27px;
-  height: 27px;
+.skill-logo-playwright {
+  width: 64px;
+  height: 64px;
 }
 
-.skill-brand-logo-selenium {
-  width: 29px;
-  height: 29px;
+.skill-logo-katalon {
+  width: 52px;
+  height: 52px;
+}
+
+.skill-logo-selenium {
+  width: 56px;
+  height: 56px;
+}
+
+.skill-logo-googlechrome {
+  width: 60px;
+  height: 60px;
+}
+
+.skill-logo-android {
+  width: 58px;
+  height: 58px;
+}
+
+.skill-logo-postman {
+  width: 56px;
+  height: 56px;
+}
+
+.skill-logo-githubactions {
+  width: 58px;
+  height: 58px;
+}
+
+.skill-logo-mysql {
+  width: 72px;
+  height: 52px;
 }
 
 .skill-card h3 {
   position: relative;
   z-index: 1;
   margin: 0;
-  font-size: 0.83rem;
-  line-height: 1.35;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.92);
+  max-width: 116px;
+  font-size: 0.88rem;
+  line-height: 1.38;
+  font-weight: 600;
+  color: rgba(246, 250, 255, 0.94);
+  text-shadow: 0 1px 14px rgba(6, 8, 14, 0.65);
 }
 
 @keyframes skills-scan {
@@ -1278,7 +1323,8 @@ img {
   }
 
   .skills-gallery {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
+    min-height: 0;
   }
 }
 
@@ -1407,42 +1453,86 @@ img {
 
   .skills-gallery {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px 10px;
+    gap: 18px 8px;
+    padding: 10px 2px 6px;
+    min-height: 0;
   }
 
   .skill-card {
-    padding: 10px 6px 10px;
-    border-radius: 16px;
+    min-height: 128px;
+    padding: 8px 4px 4px;
+    border-radius: 18px;
+  }
+
+  .skill-card::before {
+    width: 78px;
+    height: 78px;
+    border-radius: 24px;
   }
 
   .skill-icon-wrap {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    margin-bottom: 8px;
+    width: 76px;
+    height: 76px;
+    border-radius: 22px;
+  }
+
+  .skill-icon-wrap-brand {
+    width: 80px;
+    height: 80px;
   }
 
   .skill-icon {
-    width: 28px;
-    height: 28px;
+    width: 46px;
+    height: 46px;
   }
 
-  .skill-brand-logo {
-    width: 27px;
-    height: 27px;
+  .skill-logo {
+    width: 48px;
+    height: 48px;
   }
 
-  .skill-brand-logo-katalon {
-    width: 24px;
-    height: 24px;
+  .skill-logo-playwright {
+    width: 52px;
+    height: 52px;
   }
 
-  .skill-brand-logo-selenium {
-    width: 26px;
-    height: 26px;
+  .skill-logo-katalon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .skill-logo-selenium {
+    width: 48px;
+    height: 48px;
+  }
+
+  .skill-logo-googlechrome {
+    width: 50px;
+    height: 50px;
+  }
+
+  .skill-logo-android {
+    width: 50px;
+    height: 50px;
+  }
+
+  .skill-logo-postman {
+    width: 48px;
+    height: 48px;
+  }
+
+  .skill-logo-githubactions {
+    width: 50px;
+    height: 50px;
+  }
+
+  .skill-logo-mysql {
+    width: 62px;
+    height: 44px;
   }
 
   .skill-card h3 {
+    max-width: 94px;
     font-size: 0.76rem;
   }
 }

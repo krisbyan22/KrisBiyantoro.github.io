@@ -38,6 +38,8 @@ const profileView = document.querySelector('[data-view="profile"]');
 const navLinks = [...document.querySelectorAll(".nav-link")];
 const contentSections = [...document.querySelectorAll(".profile-view .content-section")];
 const repoGrid = document.querySelector("[data-repo-grid]");
+const skillGallery = document.querySelector(".skills-gallery");
+const skillCards = [...document.querySelectorAll(".skills-gallery .skill-card")];
 
 let routeLockedByClick = false;
 
@@ -112,6 +114,149 @@ const repoTemplate = (repo) => {
 
 const renderRepositories = (repositories) => {
   repoGrid.innerHTML = repositories.map(repoTemplate).join("");
+};
+
+const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+const setSkillOffset = (card, x, y) => {
+  card.dataset.dragX = `${x}`;
+  card.dataset.dragY = `${y}`;
+  card.style.setProperty("--drag-x", `${x}px`);
+  card.style.setProperty("--drag-y", `${y}px`);
+};
+
+const getSkillBounds = (card) => {
+  if (!skillGallery) {
+    return null;
+  }
+
+  const galleryRect = skillGallery.getBoundingClientRect();
+  const cardRect = card.getBoundingClientRect();
+  const currentX = Number(card.dataset.dragX || 0);
+  const currentY = Number(card.dataset.dragY || 0);
+  const baseX = cardRect.left - galleryRect.left - currentX;
+  const baseY = cardRect.top - galleryRect.top - currentY;
+
+  return {
+    minX: -baseX,
+    maxX: galleryRect.width - baseX - cardRect.width,
+    minY: -baseY,
+    maxY: galleryRect.height - baseY - cardRect.height
+  };
+};
+
+const clampSkillOffset = (card) => {
+  const bounds = getSkillBounds(card);
+  if (!bounds) {
+    return;
+  }
+
+  const currentX = Number(card.dataset.dragX || 0);
+  const currentY = Number(card.dataset.dragY || 0);
+  setSkillOffset(
+    card,
+    clamp(currentX, bounds.minX, bounds.maxX),
+    clamp(currentY, bounds.minY, bounds.maxY)
+  );
+};
+
+const initDraggableSkills = () => {
+  if (!skillGallery || !skillCards.length) {
+    return;
+  }
+
+  skillCards.forEach((card) => setSkillOffset(card, Number(card.dataset.dragX || 0), Number(card.dataset.dragY || 0)));
+
+  let activeCard = null;
+  let activePointerId = null;
+  let startPointerX = 0;
+  let startPointerY = 0;
+  let startX = 0;
+  let startY = 0;
+  let activeBounds = null;
+
+  const releaseActiveCard = () => {
+    if (!activeCard) {
+      return;
+    }
+
+    clampSkillOffset(activeCard);
+    activeCard.classList.remove("is-dragging");
+    activeCard.style.removeProperty("z-index");
+    activeCard = null;
+    activePointerId = null;
+    activeBounds = null;
+    window.removeEventListener("pointermove", handlePointerMove);
+    window.removeEventListener("pointerup", handlePointerUp);
+    window.removeEventListener("pointercancel", handlePointerUp);
+  };
+
+  const handlePointerMove = (event) => {
+    if (!activeCard || event.pointerId !== activePointerId || !activeBounds) {
+      return;
+    }
+
+    const nextX = clamp(startX + event.clientX - startPointerX, activeBounds.minX, activeBounds.maxX);
+    const nextY = clamp(startY + event.clientY - startPointerY, activeBounds.minY, activeBounds.maxY);
+    setSkillOffset(activeCard, nextX, nextY);
+  };
+
+  const handlePointerUp = (event) => {
+    if (activePointerId !== null && event.pointerId !== activePointerId) {
+      return;
+    }
+
+    releaseActiveCard();
+  };
+
+  skillCards.forEach((card) => {
+    card.addEventListener("dragstart", (event) => event.preventDefault());
+    card.addEventListener("pointerdown", (event) => {
+      if (event.pointerType === "mouse" && event.button !== 0) {
+        return;
+      }
+
+      const bounds = getSkillBounds(card);
+      if (!bounds) {
+        return;
+      }
+
+      releaseActiveCard();
+      activeCard = card;
+      activePointerId = event.pointerId;
+      activeBounds = bounds;
+      startPointerX = event.clientX;
+      startPointerY = event.clientY;
+      startX = Number(card.dataset.dragX || 0);
+      startY = Number(card.dataset.dragY || 0);
+
+      card.classList.add("is-dragging");
+      card.style.zIndex = "5";
+      card.setPointerCapture?.(event.pointerId);
+      event.preventDefault();
+
+      window.addEventListener("pointermove", handlePointerMove);
+      window.addEventListener("pointerup", handlePointerUp);
+      window.addEventListener("pointercancel", handlePointerUp);
+    });
+  });
+
+  let resizeFrame = null;
+  const reflowSkillCards = () => {
+    if (resizeFrame) {
+      window.cancelAnimationFrame(resizeFrame);
+    }
+
+    resizeFrame = window.requestAnimationFrame(() => {
+      skillCards.forEach((card) => clampSkillOffset(card));
+      resizeFrame = null;
+    });
+  };
+
+  window.addEventListener("resize", reflowSkillCards);
+  window.requestAnimationFrame(() => {
+    skillCards.forEach((card) => clampSkillOffset(card));
+  });
 };
 
 const loadRepositories = async () => {
@@ -192,3 +337,4 @@ window.addEventListener("hashchange", () => {
 const initialRoute = parseRoute();
 showRoute(initialRoute, initialRoute !== "home");
 loadRepositories();
+initDraggableSkills();
